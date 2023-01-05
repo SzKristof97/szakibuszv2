@@ -3,7 +3,7 @@ package me.szaki.szakibuszv2.controllers;
 import me.szaki.szakibuszv2.controllers.forms.LoginForm;
 import me.szaki.szakibuszv2.controllers.forms.RegisterForm;
 import me.szaki.szakibuszv2.exceptions.PasswordNotMatchException;
-import me.szaki.szakibuszv2.exceptions.UserAlreadyExsistsException;
+import me.szaki.szakibuszv2.exceptions.UserAlreadyExistsException;
 import me.szaki.szakibuszv2.exceptions.UserNotFoundException;
 import me.szaki.szakibuszv2.models.UserEntity;
 import me.szaki.szakibuszv2.services.UserService;
@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api", produces = "application/json")
+@RequestMapping(value = "/api/user", produces = "application/json")
 public class UserController {
 
     //<editor-fold defaultstate="collapsed" desc="Autowired Filed">
@@ -27,7 +27,7 @@ public class UserController {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="GET">
-    @GetMapping("/user/login")
+    @GetMapping("/login")
     public UserEntity login(@RequestBody LoginForm loginForm) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(loginForm.getUsername());
@@ -38,7 +38,7 @@ public class UserController {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="POST">
-    @PostMapping("/user/register")
+    @PostMapping("/register")
     public UserEntity register(@RequestBody RegisterForm registerForm) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(registerForm.getUsername());
@@ -50,9 +50,9 @@ public class UserController {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Exception Handlers">
-    @ExceptionHandler(value = UserAlreadyExsistsException.class)
+    @ExceptionHandler(value = UserAlreadyExistsException.class)
     @ResponseStatus(value = HttpStatus.CONFLICT)
-    public ErrorResponse handleUserAlreadyExsistsException(UserAlreadyExsistsException e) {
+    public ErrorResponse handleUserAlreadyExsistsException(UserAlreadyExistsException e) {
         return new ErrorResponse(HttpStatus.CONFLICT.value(), e.getMessage());
     }
 

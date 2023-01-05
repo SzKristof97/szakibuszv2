@@ -2,7 +2,7 @@ package me.szaki.szakibuszv2.services;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import me.szaki.szakibuszv2.exceptions.PasswordNotMatchException;
-import me.szaki.szakibuszv2.exceptions.UserAlreadyExsistsException;
+import me.szaki.szakibuszv2.exceptions.UserAlreadyExistsException;
 import me.szaki.szakibuszv2.exceptions.UserNotFoundException;
 import me.szaki.szakibuszv2.interfaces.IUserService;
 import me.szaki.szakibuszv2.models.UserEntity;
@@ -29,10 +29,12 @@ public class UserService implements IUserService {
     @Parameter(name = "userEntity", description = "The user to register")
     @Description(value = "Registers a new user to the database and returns the user if the registration was successful")
     public UserEntity registerUser(UserEntity userEntity) {
+        userEntity.setUsername(userEntity.getUsername().toLowerCase());
+
         // First check if the user is already registered
-        Optional<UserEntity> user = userRepository.findById(userEntity.getId());
+        Optional<UserEntity> user = userRepository.findByUsername(userEntity.getUsername());
         if (user.isPresent()) {
-            throw new UserAlreadyExsistsException("User already exsists");
+            throw new UserAlreadyExistsException("User already exsists");
         }
 
         // If the user is not registered, register it
@@ -43,6 +45,8 @@ public class UserService implements IUserService {
     @Parameter(name = "userEntity", description = "The user to login")
     @Description(value = "Logins the user and returns the user if the login was successful")
     public UserEntity loginUser(UserEntity userEntity) {
+        userEntity.setUsername(userEntity.getUsername().toLowerCase());
+
         // Check if the user is registered
         Optional<UserEntity> user = userRepository.findByUsername(userEntity.getUsername());
         if (!user.isPresent()) {
