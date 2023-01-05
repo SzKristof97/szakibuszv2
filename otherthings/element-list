@@ -1,0 +1,11 @@
+me.szaki.szakibuszv2
+me.szaki.szakibuszv2.configuration
+me.szaki.szakibuszv2.controllers
+me.szaki.szakibuszv2.controllers.forms
+me.szaki.szakibuszv2.exceptions
+me.szaki.szakibuszv2.interfaces
+me.szaki.szakibuszv2.models
+me.szaki.szakibuszv2.models.enums
+me.szaki.szakibuszv2.repositories
+me.szaki.szakibuszv2.services
+me.szaki.szakibuszv2.utilities
