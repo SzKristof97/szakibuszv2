@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/user", produces = "application/json")
+@RequestMapping(value = "/api", produces = "application/json")
 public class UserController {
 
     //<editor-fold defaultstate="collapsed" desc="Autowired Filed">
@@ -27,7 +27,7 @@ public class UserController {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="GET">
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public UserEntity login(@RequestBody LoginForm loginForm) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(loginForm.getUsername());
@@ -38,7 +38,7 @@ public class UserController {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="POST">
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     public UserEntity register(@RequestBody RegisterForm registerForm) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(registerForm.getUsername());

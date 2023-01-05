@@ -8,13 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "/api/purchase", produces = "application/json")
+@RequestMapping(name = "/api", produces = "application/json")
 public class PurchaseController {
 
     @Autowired
     private PurchaseService purchaseService;
 
-    @PostMapping("/place")
+    @PostMapping("/purchase/place")
     public void placePurchase(@RequestBody PurchaseForm purchaseForm) {
         purchaseService.placePurchase(purchaseForm.toPurchaseEntity());
     }

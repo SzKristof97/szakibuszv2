@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "/api/ticket", produces = "application/json")
+@RequestMapping(name = "/api", produces = "application/json")
 public class TicketController {
 
     @Autowired
@@ -19,19 +19,19 @@ public class TicketController {
 
     //<editor-fold default-state="collapsed" desc="GET mapping methods">
 
-    @GetMapping("/all")
+    @GetMapping("/ticket/all")
     public Iterable<TicketEntity> getAllTickets() {
         return ticketService.getAllTickets();
     }
 
-    @GetMapping("/bid")
+    @GetMapping("/ticket/bid")
     public TicketEntity getTicketById(@RequestBody Integer id) {
         return ticketService.getTicketById(id);
     }
     //</editor-fold>
 
     //<editor-fold default-state="collapsed" desc="POST mapping methods">
-    @PostMapping("/register")
+    @PostMapping("/ticket/register")
     public TicketEntity registerTicket(@RequestBody RegisterTicketForm ticketForm) {
         return ticketService.registerTicket(ticketForm.toTicketEntity());
     }
@@ -39,7 +39,7 @@ public class TicketController {
     //</editor-fold>
 
     //<editor-fold default-state="collapsed" desc="PUT mapping methods">
-    @PutMapping("/update")
+    @PutMapping("/ticket/update")
     public TicketEntity updateTicket(@RequestBody RegisterTicketForm ticketForm) {
         return ticketService.updateTicket(ticketForm.toTicketEntity());
     }
@@ -48,7 +48,7 @@ public class TicketController {
 
     //<editor-fold default-state="collapsed" desc="DELETE mapping methods">
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/ticket/delete")
     public void deleteTicket(@RequestBody Integer id) {
         ticketService.deleteTicket(id);
     }
