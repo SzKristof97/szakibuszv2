@@ -1,0 +1,76 @@
+==== [ User ] ====
+LOGIN (GET request):
+	útvonal: /api/user/login
+	Küldés:
+		Body:
+			{
+				"username": "béla",
+				"password": "asd1234"
+			}
+	Várt válasz:
+		{
+			"id": 1,
+			"username": "Béla",
+			"password": "asd1234",
+			"email": "bela@gmail.com",
+			"created": "2023-01-05T01:46:56.000+00:00"
+		}
+	Lehetséges válaszok:
+		Body:
+			1)
+			{
+				"id": 1,
+				"username": "Béla",
+				"password": "asd1234",
+				"email": "bela@gmail.com",
+				"created": "2023-01-05T01:46:56.000+00:00"
+			}
+			2)
+			{
+				"statusCode": 400,
+				"message": "Password not match"
+			}
+			3)
+			{
+				"statusCode": 404,
+				"message": "User not found"
+			}
+			4)
+			{
+				"statusCode": 500,
+				"message": "Változó hiba üzenet, a hibától függ!"
+			}
+REGISTER (POST request):
+	útvonal: /api/user/register
+	Küldés:
+		Body:
+			{
+				"username": "Béla",
+				"password": "asd1234",
+				"email": "bela@gmail.com"
+			}
+	Várt válasz:
+		{
+			"statusCode": 409,
+			"message": "User already exsists"
+		}
+	Lehetséges válaszok:
+		Body:
+			1)
+			{
+				"id": 2,
+				"username": "béla2",
+				"password": "asd1234",
+				"email": "bela@gmail.com",
+				"created": null
+			}
+			2)
+			{
+				"statusCode": 409,
+				"message": "User already exsists"
+			}
+			3)
+			{
+				"statusCode": 500,
+				"message": "Változó hiba üzenet, a hibától függ!"
+			}
