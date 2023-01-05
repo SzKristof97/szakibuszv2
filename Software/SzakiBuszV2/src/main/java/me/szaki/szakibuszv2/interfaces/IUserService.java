@@ -2,8 +2,6 @@ package me.szaki.szakibuszv2.interfaces;
 
 import me.szaki.szakibuszv2.models.UserEntity;
 
-import java.util.List;
-
 /**
  * Interface for the user service
  */
