@@ -28,7 +28,6 @@ public class OpenAPIConfig {
                         )
                         .license(new License().name("GNU General Public License V3.0").url("https://github.com/SzKristof97/szakibuszv2/blob/main/LICENSE"))
                         .contact(new Contact().name("Szabó Kristóf Gyula").email("szkristof97.gyula@gmail.com"))
-                        .contact(new Contact().name("Jankovics Szilárd").email("jankovicsszilard@gmail.com"))
                 );
     }
 }
